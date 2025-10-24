@@ -1,6 +1,6 @@
 # Test case for LEDs
 CONFIG led.cfg
-DICTIONARY out/klipper.dict
+DICTIONARY klipper.dict
 
 # SET_LED tests
 SET_LED LED=lled RED=0.2
