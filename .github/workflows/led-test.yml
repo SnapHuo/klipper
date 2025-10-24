@@ -27,7 +27,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r docs/_klipper3d/mkdocs-requirements.txt
-          pip install -r scripts/requirements.txt  # Klipper 根目录下的依赖文件
+          pip install -r scripts/klippy-requirements.txt  # Klipper 根目录下的依赖文件
           # 额外依赖（如 pytest 可选，Klipper 测试脚本本身可独立运行）
 
       # 步骤 4：执行 led.test 测试脚本
