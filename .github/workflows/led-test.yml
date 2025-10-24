@@ -40,7 +40,6 @@ jobs:
 
       - name: Build firmware
         run: |
-          source venv/bin/activate
           make clean
           make
 
