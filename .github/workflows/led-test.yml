@@ -34,7 +34,7 @@ jobs:
           python -m pip install --upgrade pip
           python3 -m venv venv
           source venv/bin/activate
-          pip install greenlet
+          pip install greenlet cffi pyserial
           pip install -r docs/_klipper3d/mkdocs-requirements.txt
           pip install -r scripts/klippy-requirements.txt  # Klipper 根目录下的依赖文件
 
