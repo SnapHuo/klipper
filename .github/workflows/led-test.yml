@@ -36,13 +36,16 @@ jobs:
           source venv/bin/activate
           pip install -r docs/_klipper3d/mkdocs-requirements.txt
           pip install -r scripts/klippy-requirements.txt  # Klipper 根目录下的依赖文件
+
+      - name: Build firmware
+        run: |
+          source venv/bin/activate
           make clean
-          make menuconfig
           make
-          # 额外依赖（如 pytest 可选，Klipper 测试脚本本身可独立运行）
 
       # 步骤 4：执行 led.test 测试脚本
       - name: Run LED integration test
         run: |
+          echo "******* Running LED integration test... *******"
           # 使用 Klipper 自带的测试脚本执行 led.test
-          python ./scripts/test-klippy.py test/klipper/led.test
+          python scripts/test-klippy.py test/klipper/led.test
