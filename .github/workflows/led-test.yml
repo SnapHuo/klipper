@@ -25,13 +25,18 @@ jobs:
       # 步骤 3：安装 Klipper 测试所需的 Python 库
       - name: Install dependencies
         run: |
+          sudo apt-get update
+          sudo apt install python3.12
           python -m pip install --upgrade pip
+          python3 -m venv venv
+          source venv/bin/activate
           pip install -r docs/_klipper3d/mkdocs-requirements.txt
           pip install -r scripts/klippy-requirements.txt  # Klipper 根目录下的依赖文件
+          make
           # 额外依赖（如 pytest 可选，Klipper 测试脚本本身可独立运行）
 
       # 步骤 4：执行 led.test 测试脚本
       - name: Run LED integration test
         run: |
           # 使用 Klipper 自带的测试脚本执行 led.test
-          ./scripts/test-klippy.py test/klipper/led.test
+          python ./scripts/test-klippy.py test/klipper/led.test
