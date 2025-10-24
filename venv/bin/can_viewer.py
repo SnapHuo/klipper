@@ -1,0 +1,14 @@
+#!/mnt/c/Users/snapmaker/Desktop/Git/Github/klipper/venv/bin/python3
+# coding: utf-8
+
+"""
+See :mod:`can.viewer`.
+"""
+
+from __future__ import absolute_import
+
+from can.viewer import main
+
+
+if __name__ == "__main__":
+    main()
