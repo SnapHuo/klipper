@@ -4,8 +4,8 @@ name: LED Test
 on:
   push:
     branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
+#   pull_request:
+#     branches: [ main, master ]
 
 jobs:
   test-led:
@@ -21,12 +21,16 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"  # 兼容 Klipper 测试的版本
+    
+      # 添加安装AVR工具链的步骤
+      - name: Install AVR toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc-avr avr-libc
 
       # 步骤 3：安装 Klipper 测试所需的 Python 库
       - name: Install dependencies
         run: |
-          sudo apt-get update
-          sudo apt install python3.12
           python -m pip install --upgrade pip
           python3 -m venv venv
           source venv/bin/activate
