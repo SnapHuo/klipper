@@ -34,4 +34,4 @@ jobs:
       - name: Run LED integration test
         run: |
           # 使用 Klipper 自带的测试脚本执行 led.test
-          python scripts/test-klippy.py test/klipper/led.test
+          ./scripts/test-klippy.py test/klipper/led.test
