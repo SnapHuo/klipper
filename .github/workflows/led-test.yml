@@ -35,8 +35,9 @@ jobs:
           python3 -m venv venv
           source venv/bin/activate
           pip install greenlet cffi pyserial
-          pip install -r docs/_klipper3d/mkdocs-requirements.txt
-          pip install -r scripts/klippy-requirements.txt  # Klipper 根目录下的依赖文件
+          # Klipper 根目录下的依赖文件
+          # pip install -r docs/_klipper3d/mkdocs-requirements.txt
+          pip install -r scripts/klippy-requirements.txt --break-system-packages
 
       - name: Build firmware
         run: |
@@ -49,4 +50,4 @@ jobs:
           echo "******* Running LED integration test... *******"
           # 使用 Klipper 自带的测试脚本执行 led.test
           source venv/bin/activate
-          python scripts/test_klippy.py test/klippy/led.test
+          python3 scripts/test_klippy.py test/klippy/led.test
