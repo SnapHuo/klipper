@@ -16,17 +16,9 @@ mkdir -p ${BUILD_DIR} ${CACHE_DIR}
 ######################################################################
 
 echo -e "\n\n=============== Install system dependencies\n\n"
-PKGS="virtualenv libffi-dev build-essential"
+PKGS="virtualenv python2-dev libffi-dev build-essential"
 PKGS="${PKGS} gcc-avr avr-libc"
 PKGS="${PKGS} libnewlib-arm-none-eabi gcc-arm-none-eabi binutils-arm-none-eabi"
-
-# 在新版本Ubuntu中，尝试安装python2-dev，如果失败则跳过
-if apt-cache show python2-dev > /dev/null 2>&1; then
-    PKGS="${PKGS} python2-dev"
-else
-    echo "Warning: python2-dev not available, continuing without it"
-fi
-
 sudo apt-get update
 sudo apt-get install ${PKGS}
 
@@ -77,11 +69,5 @@ ${BUILD_DIR}/python-env/bin/pip install -r ${MAIN_DIR}/scripts/klippy-requiremen
 
 echo -e "\n\n=============== Install python2 virtualenv\n\n"
 cd ${MAIN_DIR}
-
-# 尝试创建python2虚拟环境，如果失败则跳过
-if command -v python2 > /dev/null 2>&1; then
-    virtualenv -p python2 ${BUILD_DIR}/python2-env
-    ${BUILD_DIR}/python2-env/bin/pip install -r ${MAIN_DIR}/scripts/klippy-requirements.txt
-else
-    echo "Warning: python2 not available, skipping python2 virtualenv creation"
-fi
+virtualenv -p python2 ${BUILD_DIR}/python2-env
+${BUILD_DIR}/python2-env/bin/pip install -r ${MAIN_DIR}/scripts/klippy-requirements.txt
