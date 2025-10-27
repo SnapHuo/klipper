@@ -32,12 +32,13 @@ jobs:
       # 步骤 3：安装 Klipper 测试所需的 Python 库
       - name: Install dependencies
         run: |
+          rm -rf venv
           python3 -m venv venv
           source venv/bin/activate
           pip install --upgrade pip
           echo "****** Klipper 根目录下的依赖文件 *******"
           pip install -r scripts/klippy-requirements.txt --break-system-packages
-          pip install greenlet --break-system-packages
+          python -c "import greenlet; print('Greenlet version:', greenlet.__version__)"
 
       - name: Build firmware
         run: |
