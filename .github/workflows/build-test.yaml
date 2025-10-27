@@ -22,7 +22,6 @@ jobs:
     
     - name: LED Test
       run: 
-        cd klipper
         ./ci_build/python_env/bin/python3 scripts/test_klippy.py -d ./ci_build/dict test/klippy/led.test
 
     - name: Upload micro-controller data dictionaries
