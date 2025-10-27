@@ -27,6 +27,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y gcc-avr avr-libc
+          sudo apt-get install -y libnewlib-arm-none-eabi gcc-arm-none-eabi binutils-arm-none-eabi
 
       # 步骤 3：安装 Klipper 测试所需的 Python 库
       - name: Install dependencies
@@ -34,12 +35,12 @@ jobs:
           python3 -m venv venv
           source venv/bin/activate
           echo "****** Klipper 根目录下的依赖文件 *******"
-          pip install -r docs/_klipper3d/mkdocs-requirements.txt --break-system-packages
           pip install -r scripts/klippy-requirements.txt --break-system-packages
 
       - name: Build firmware
         run: |
           make clean
+          make distclean
           make
 
       # 步骤 4：执行 led.test 测试脚本
