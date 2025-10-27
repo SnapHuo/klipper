@@ -48,5 +48,6 @@ jobs:
         run: |
           echo "******* Running LED integration test... *******"
           # 使用 Klipper 自带的测试脚本执行 led.test
+          echo "Starting ...."
           source venv/bin/activate
           python scripts/test_klippy.py -d out test/klippy/led.test
