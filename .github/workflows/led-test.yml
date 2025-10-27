@@ -34,8 +34,10 @@ jobs:
         run: |
           python3 -m venv venv
           source venv/bin/activate
+          pip install --upgrade pip
           echo "****** Klipper 根目录下的依赖文件 *******"
           pip install -r scripts/klippy-requirements.txt --break-system-packages
+          pip install greenlet --break-system-packages
 
       - name: Build firmware
         run: |
