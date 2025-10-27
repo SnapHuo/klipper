@@ -35,7 +35,7 @@ jobs:
           python3 -m venv venv
           source venv/bin/activate
           # Klipper 根目录下的依赖文件 
-          # pip install -r docs/_klipper3d/mkdocs-requirements.txt --break-system-packages
+          pip install -r docs/_klipper3d/mkdocs-requirements.txt --break-system-packages
           pip install -r scripts/klippy-requirements.txt --break-system-packages
 
       - name: Build firmware
